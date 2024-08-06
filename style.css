@@ -2,19 +2,39 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #b9b3a9;
+    background: #ececec;
     display: flex;
     justify-content: center;
 }
 
 .container {
     width: 450px;
+    height: 450px;
     padding: 20px;
     margin-top: 80px;
-    background-color: #fff;
+    background-color: #9fd3c7;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    position: relative;
 }
+
+.quizBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.queation {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+}
+
+.option label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
 
 h1 {
     text-align: center;
@@ -25,30 +45,46 @@ h1 {
     margin-bottom: 10px;
 }
 
-.options {
-    margin-bottom: 20px;
-}
 
-.option {
-    display: block;
-    margin-bottom: 10px;
-}
 
 .button {
-    display: inline-block;
+    width: 100px;
+    height: 40px;
+    /* display: inline-block; */
     padding: 10px 20px;
-    background-color: #428bca;
-    color: #fff;
+    background-color: #486281;
+    color: #ffffff;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-weight: bold;
+    font-size: 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
-    margin-right: 10px;
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
+}
+
+.buttonR {
+    width: 100px;
+    height: 40px;
+    padding: 10px 20px;
+    background-color: #486281;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
 }
 
 .button:hover {
-    background-color: #3071a9;
+    background-color: #142d4c;
+    font-size: 1.1rem;
 }
 
 .result {

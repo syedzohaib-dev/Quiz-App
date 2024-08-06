@@ -12,11 +12,32 @@
 
     <div class="container">
         <h1>Quiz App</h1>
-        <div id="quiz"></div>
+        <div id="quiz" class="quizBox">
+            <!-- <p class="queation">What is correct HTML Santax</p>
+            <div class="option">
+                <input type="radio" name="option" id="option1">
+                <label for="">HTML</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option" id="option2">
+                <label for="">CSS</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option" id="option3">
+                <label for="">JUPITER</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option" id="option4">
+                <label for="">REACT</label>
+            </div> -->
+
+        </div>
+
+
         <div id="result" class="result"></div>
-        <button id="submit" class="button">Submit</button>
-        <button id="retry" class="button hide">Retry</button>
-        <button id="showAnswer" class="button hide">Show Answer</button>
+        <button id="submit" onclick="renderQuestion()" class="button">Submit</button>
+        <button id="retry" onclick="retryQuiz()" class="buttonR hide">Retry</button>
+        <!-- <button id="showAnswer" class="button hide">Show Answer</button> -->
     </div>
 
 

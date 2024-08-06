@@ -50,55 +50,70 @@ const quizData = [
         answer: "transition-duration"
     }
 ];
-
-const quizContiner = document.getElementById('quiz')
-const resultContainer = document.getElementById('result')
-const submitButton = document.getElementById('submit')
-const retryButton = document.getElementById('retry')
-const showAnswerButton = document.getElementById('showAnswer')
-
-let currentQuestion = 0
+let index = 0
 let score = 0
-let incorrectAnswer = []
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        [array[i], array[j]] = [array[j], array[i]]
-    }
-}
+function renderQuestion() {
+    const quiz = document.getElementById('quiz')
+    const option = document.getElementsByName('option')
+    const result = document.getElementById('result')
+    const retry = document.getElementById('retry')
+    const submit = document.getElementById('submit')
 
-function displayQuestion() {
-    const questionData = quizData[currentQuestion]
-    const questionElement = document.createElement('div')
-    questionElement.className = 'question'
-    questionElement.innerHTML = questionData.question
+    if (index > 0) {
+        for (let i = 0; i < option.length; i++) {
+            if (option[i].checked) {
+                const selectedOption = option[i].nextElementSibling.textContent.trim();
+                if (selectedOption === quizData[index - 1].answer) {
+                    score++
+                }
+            }
 
-    const optionsElement = document.createElement('div')
-    optionsElement.className = 'options'
 
-    const shuffledOptions = [...questionData.options]
-    shuffleArray(shuffledOptions)
-
-    for (let i = 0; i < shuffledOptions.length; i++) {
-        const option = document.createElement('lable')
-        option.className = 'option'
-
-        const radio = document.createElement('input')
-        radio.type = 'radio'
-        radio.name = 'quiz'
-        radio.value = shuffledOptions[i]
-
-        const optionText = document.createTextNode(shuffledOptions[i])
-
-        option.appendChild(radio)
-        option.appendChild(optionText)
-        optionsElement.appendChild(option)
+        }
     }
 
-    quizContiner.innerHTML = ''
-    quizContiner.appendChild(questionElement)
-    quizContiner.appendChild(optionsElement)
+    if (index >= quizData.length) {
+        quiz.innerHTML = ''
+        result.innerHTML = `Your Score is ${score} out of ${quizData.length}`
+        submit.classList.add('hide')
+        retry.classList.remove('hide')
+
+        return
+    }
+
+
+
+    quiz.innerHTML = `<p class="queation">${quizData[index].question}</p>
+            <div class="option">
+                <input type="radio" name="option" id="option1">
+                <label for="">${quizData[index].options[0]}</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option" id="option2">
+                <label for="">${quizData[index].options[1]}</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option" id="option3">
+                <label for="">${quizData[index].options[2]}</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="option" id="option4">
+                <label for="">${quizData[index].options[3]}</label>
+            </div>`
+    index++
 }
 
-displayQuestion()
+function retryQuiz() {
+    index = 0
+    score = 0
+    document.getElementById('result').innerHTML = ""
+    document.getElementById('retry').classList.add('hide')
+    document.getElementById('submit').classList.remove('hide')
+    renderQuestion()
+
+}
+
+
+
+renderQuestion()
